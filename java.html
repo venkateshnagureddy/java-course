@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Full Stack Developer Course</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+  /* Sticky Navbar */
+  .header {
+    position: -webkit-sticky;
+    /* For Safari support */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Ensures the navbar stays above other elements */
+    background-color: #fff;
+    /* White background for the navbar */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adds subtle shadow for effect */
+    width: 100%;
+    /* Ensure it takes full width */
+    margin: 0;
+    /* Remove any margin */
+  }
+
+  /* Optional: Styling for the logo and navigation */
+  .logo img {
+    height: 35px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-right: 150px;
+    /* Adjust as per your design */
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: navy;
+    /* Navbar text color */
+    font-weight: bold;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-links a:hover {
+    color: #f39c12;
+    /* Highlight color on hover */
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1;
+    width: 220px;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: navy;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f39c12;
+    color: white;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: navy;
+      margin-bottom: 20px;
+    }
+
+    /* Key Features Section */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-icon {
+      font-size: 40px;
+      color: #f39c12;
+      margin-bottom: 15px;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: navy;
+    }
+
+    .feature-text {
+      font-size: 14px;
+      color: navy;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .feature-card {
+        padding: 15px;
+      }
+      .feature-icon {
+        font-size: 30px;
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5em;
+      color: navy;
+      margin-bottom: 30px;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* Card Styles */
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon-container {
+      width: 60px;
+      height: 60px;
+      background-color: #e0f7fa;
+      color: #007bff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 24px;
+    }
+
+    .card h3 {
+      font-size: 1.5em;
+      color: navy;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: navy;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .faq-item {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #ffffff;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .faq-question:hover {
+      background-color: #0056b3;
+    }
+
+    .faq-question .symbol {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 15px;
+      background-color: #f8f9fa;
+      color: #333333;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-question .symbol {
+      transform: rotate(45deg);
+      transition: transform 0.3s;
+    }
+</style>
+
+<body class="bg-gray-50 font-sans">
+
+  <!-- Header Section -->
+  <div class="header">
+    <!-- Logo Image -->
+    <div class="logo">
+      <img src="image/logo.png" alt="Vetri Technology Solutions Logo">
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link"><i class="fas fa-cogs"></i> VTS PROCESS</a>
+
+      <!-- Dropdown Menu for OUR TRAININGS -->
+      <div class="dropdown">
+        <a href="#" class="nav-link"><i class="fas fa-graduation-cap"></i> OUR TRAININGS &#9662;</a>
+        <div class="dropdown-content">
+          <a href="#" class="dropdown-item"><i class="fas fa-code"></i> Python Full Stack</a>
+          <a href="java course.html" class="dropdown-item"><i class="fas fa-coffee"></i> Java Full Stack</a>
+          <a href="#" class="dropdown-item"><i class="fas fa-mobile-alt"></i> Mobile App Development</a>
+          <a href="#" class="dropdown-item"><i class="fas fa-chart-line"></i> Data Analytics</a>
+          <a href="#" class="dropdown-item"><i class="fas fa-database"></i> Data Science</a>
+        </div>
+      </div>
+
+      <a href="#" class="nav-link"><i class="fas fa-briefcase"></i> CAREERS</a>
+    </div>
+  </div>
+
+
+  <!-- Banner -->
+  <section class="bg-orange-600 text-white">
+    <div class="container mx-auto px-4 py-20 text-center">
+      <h1 class="text-4xl font-bold">Java Full Stack Developer Course</h1>
+      <p class="mt-4 text-lg">Master Java, Spring, Hibernate, and Angular to become a top-notch full-stack developer.
+      </p>
+    </div>
+  </section>
+
+  
+  <section class="container">
+    <h2 style="font-size: 25px; font-weight: bold;">Why Choose This Course?</h2><br>
+    <div class="grid">
+      <!-- Highlight 1 -->
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h3>100% Job Guarantee</h3>
+        <p>Land your dream job with our placement assistance program.</p>
+      </div>
+      <!-- Highlight 2 -->
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-tools"></i>
+        </div>
+        <h3>Hands-On Training</h3>
+        <p>Learn through real-world projects and case studies.</p>
+      </div>
+      <!-- Highlight 3 -->
+      <div class="card">
+        <div class="icon-container">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <h3>Expert Mentors</h3>
+        <p>Gain insights from industry professionals and experienced instructors.</p>
+      </div>
+    </div>
+  </section>
+  <!-- About Section -->
+  <section class="bg-blue-100 py-12">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-blue-800">What You’ll Learn</h2>
+      <p class="mt-4 text-gray-600">Comprehensive coverage of Java, backend frameworks, frontend tools, and database
+        systems.</p>
+      <button class="mt-6 px-6 py-3 bg-blue-600 text-white rounded hover:bg-indigo-700">
+        Know More
+      </button>
+    </div>
+  </section>
+
+
+  <div class="container">
+    <h2 style="font-size: 25px;color: navy;">Key Features of Java full-stack Stack Training</h2>
+    <br>
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">✔️</div>
+        <div class="feature-title">30+ Hours Course Duration</div>
+        <div class="feature-text">Comprehensive training with hands-on projects to ensure in-depth learning.</div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <div class="feature-title">Industry Expert Faculties</div>
+        <div class="feature-text">Learn from trainers with real-world experience in MEAN stack development.</div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-title">Completed 800+ Batches</div>
+        <div class="feature-text">Our extensive experience ensures high-quality and result-oriented training.</div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">💼</div>
+        <div class="feature-title">100% Job-Oriented Training</div>
+        <div class="feature-text">Specialized curriculum designed to make you job-ready from day one.</div>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <div class="feature-title">Certification Guidance</div>
+        <div class="feature-text">Get expert advice to help you earn recognized certifications in MEAN Stack.</div>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="feature-card">
+        <div class="feature-icon">🆓</div>
+        <div class="feature-title">Free Demo Class Available</div>
+        <div class="feature-text">Experience our teaching methods with a no-cost demo class before enrolling.</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="faq-container">
+    <h2 style="text-align: center; color: navy;font-size: 25px;font-weight: bold;">Frequently Asked Questions</h2>
+    <br>
+
+    <!-- FAQ Item 1 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What is the duration of the course?</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="faq-answer">
+        The course duration is 6 months, including theoretical and practical sessions.
+      </div>
+    </div>
+
+    <!-- FAQ Item 2 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Is there a job guarantee?</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="faq-answer">
+        Yes, we provide 100% job assistance with mock interviews and resume-building sessions.
+      </div>
+    </div>
+
+    <!-- FAQ Item 3 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Are the mentors industry experts?</span>
+        <span class="symbol">+</span>
+      </div>
+      <div class="faq-answer">
+        Absolutely! All mentors have 10+ years of experience in their respective fields.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // FAQ Toggle Functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+
+      question.addEventListener('click', () => {
+        // Toggle the active class
+        item.classList.toggle('active');
+
+        // Close other items if opened
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
